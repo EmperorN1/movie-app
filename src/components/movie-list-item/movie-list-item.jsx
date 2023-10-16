@@ -52,13 +52,15 @@ export default class MovieListItem extends Component {
             </li>
             <Consumer>
               {(genres) => {
-                return (
-                  <li className="movie-card-genre">
-                    {genreIds.map((item) => {
-                      return <span key={item}>{genres[item]}</span>;
-                    })}
-                  </li>
-                );
+                if (genres != null) {
+                  return (
+                    <li className="movie-card-genre">
+                      {genreIds.map((item) => {
+                        return <span key={item}>{genres[item]}</span>;
+                      })}
+                    </li>
+                  );
+                }
               }}
             </Consumer>
             <li className="movie-card-overview">
