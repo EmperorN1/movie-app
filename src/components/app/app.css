@@ -1,0 +1,20 @@
+.container {
+    background-color: #fff;
+    max-width: 1010px;
+    min-height: 100vh;
+    margin: 0 auto;
+    margin-top: -16px;
+    margin-bottom: -7px;
+    box-sizing: border-box;
+    padding: 21px 35px 17px 36px;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 37px;
+}
+
+.tabs {
+    font-size: 20px;
+}

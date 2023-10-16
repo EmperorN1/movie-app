@@ -1,0 +1,16 @@
+.movie-list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 451px);
+    grid-column-gap: 36px;
+    grid-row-gap: 34px;
+    padding-left: 0;
+    list-style-type: none;
+    margin-top: 0;
+}
+
+.spin {
+    display: flex;
+    justify-content: center;
+}
+
