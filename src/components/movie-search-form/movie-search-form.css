@@ -13,3 +13,17 @@ form {
     border: 1px solid #D9D9D9;
     border-radius: 4px;
 }
+
+@media screen and (max-width: 1010px) {
+    .movie-form {        
+        width: 451px;        
+        margin: 20px, 16px, 0, 36px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .movie-form {        
+        width: 388px;        
+        margin: 20px, 16px, 0, 36px;
+    }
+}

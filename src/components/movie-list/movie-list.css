@@ -14,3 +14,17 @@
     justify-content: center;
 }
 
+
+@media screen and (max-width: 1010px) {
+    .movie-list {        
+        grid-template-columns: repeat(1, 451px);
+        grid-row-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .movie-list {        
+        grid-template-columns: repeat(1, 388px);
+        grid-row-gap: 20px;
+    }
+}

@@ -10,8 +10,8 @@ export default class MovieListItem extends Component {
   movieService = new MovieService();
 
   rateMovie = (value) => {
-    this.movieService.postRating(this.props.guestID, this.props.id, value).then((res) => {
-      console.log(res);
+    this.movieService.postRating(this.props.guestID, this.props.id, value).then(() => {
+      null;
     });
   };
 
@@ -44,32 +44,32 @@ export default class MovieListItem extends Component {
       <div className="movie-card">
         <img className="movie-card-img" src={poster} />
         <div className="movie-card-info">
-          <span className="movie-card-title">{this.sliceWords(title, 50)}</span>
-          <span className={className}>{voteAverage}</span>
-          <ul>
-            <li className="movie-card-date">
-              <span>{releaseDate ? format(new Date(releaseDate), 'PPP') : null}</span>
-            </li>
-            <Consumer>
-              {(genres) => {
-                if (genres != null) {
-                  return (
-                    <li className="movie-card-genre">
-                      {genreIds.map((item) => {
-                        return <span key={item}>{genres[item]}</span>;
-                      })}
-                    </li>
-                  );
-                }
-              }}
-            </Consumer>
-            <li className="movie-card-overview">
-              <span>{this.sliceWords(overview, 200)}</span>
-            </li>
-            <li className="movie-card-rate">
-              <Rate className="rate" allowHalf defaultValue={rating} count={10} onChange={this.rateMovie} />
-            </li>
-          </ul>
+          <div className="wrapper">
+            <span className="movie-card-title">{this.sliceWords(title, 50)}</span>
+            <span className={className}>{voteAverage}</span>
+            <ul>
+              <li className="movie-card-date">
+                <span>{releaseDate ? format(new Date(releaseDate), 'PPP') : null}</span>
+              </li>
+              <Consumer>
+                {(genres) => {
+                  if (genres != null) {
+                    return (
+                      <li className="movie-card-genre">
+                        {genreIds.map((item) => {
+                          return <span key={item}>{genres[item]}</span>;
+                        })}
+                      </li>
+                    );
+                  }
+                }}
+              </Consumer>
+              <li className="movie-card-rate">
+                <Rate className="rate" allowHalf defaultValue={rating} count={10} onChange={this.rateMovie} />
+              </li>
+            </ul>
+          </div>
+          <div className="movie-card-overview">{this.sliceWords(overview, 200)}</div>
         </div>
       </div>
     );

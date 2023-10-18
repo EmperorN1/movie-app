@@ -27,7 +27,7 @@ export default class MovieService {
 
   async getRatedMovies(query, page) {
     const res = await this.getResource(`guest_session/${query}/rated/movies?api_key=${this._apiKey}&page=${page}`);
-    console.log(res);
+    // console.log(res);
     return {
       results: res.results.map((item) => {
         return this._transformMovie(item);

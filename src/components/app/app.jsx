@@ -64,21 +64,23 @@ class App extends React.Component {
         <Online>
           <Provider value={this.genres}>
             <React.Fragment>
-              <Tabs
-                centered
-                defaultActiveKey={selectedTab}
-                items={[
-                  {
-                    key: '1',
-                    label: 'Search',
-                  },
-                  {
-                    key: '2',
-                    label: 'Rated',
-                  },
-                ]}
-                onChange={this.onChangeTab}
-              />
+              <div className="tab-wrapper">
+                <Tabs
+                  centered
+                  defaultActiveKey={selectedTab}
+                  items={[
+                    {
+                      key: '1',
+                      label: 'Search',
+                    },
+                    {
+                      key: '2',
+                      label: 'Rated',
+                    },
+                  ]}
+                  onChange={this.onChangeTab}
+                />
+              </div>
               {search}
               <MovieList
                 query={query}

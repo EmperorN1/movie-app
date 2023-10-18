@@ -1,17 +1,17 @@
 .movie-card {
-width: 451px;
-height: 279px;
-display: flex;
-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);  
+    position: relative;
+    height: 279px;
+    display: flex;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);  
 }
 
 .movie-card .movie-card-img {
-    min-width: 183px;
+    width: 183px;
+    height: 100%;
 }
 
 .movie-card .movie-card-info {
-    position: relative;
-    width: 268px;
+    width: 228px;
     padding: 10px 20px;  
 }
 
@@ -65,7 +65,6 @@ box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 .movie-card-info .movie-card-genre {
     display: flex;
     flex-wrap: wrap;
-
     font-size: 12px;
     opacity: 0.65;
 }
@@ -82,7 +81,8 @@ box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     border-radius: 2px;
 }
 
-.movie-card-info .movie-card-overview {
+.movie-card .movie-card-overview {
+    display: inline-block;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.5;
@@ -90,9 +90,39 @@ box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 
 .movie-card-info .movie-card-rate {
     position: absolute;
-    bottom: 14px;
+    bottom: 10px;
+    right: 14px
 }
 
 .rate {
     font-size: 16px;
+}
+
+@media screen and (max-width: 500px) {
+    .movie-card {
+        height: 245px;
+        margin: 0 auto; 
+    }
+
+    .movie-card .movie-card-info {
+        width: 367px;
+        padding: 4px 10px;
+    }
+
+    .movie-card-info .wrapper {
+        margin-left: 83px;
+        min-height: 103px;
+    }
+
+    .movie-card .movie-card-img {
+        position: absolute;
+        width: 60px;
+        height: 91px;
+        top: 6px;
+        left: 10px;
+    }
+
+    .movie-card .movie-card-overview {
+        padding: 0;
+    }
 }
