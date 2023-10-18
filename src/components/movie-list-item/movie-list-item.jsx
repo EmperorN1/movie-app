@@ -4,8 +4,8 @@ import './movie-list-item.css';
 import format from 'date-fns/format';
 import { Rate } from 'antd';
 
-import MovieService from '../../services/movie-service';
-import { Consumer } from '../movie-genre-context/movie-genre-context';
+import MovieService from '../../services';
+import { Consumer } from '../movie-genre-context';
 
 export default class MovieListItem extends Component {
   static propTypes = {

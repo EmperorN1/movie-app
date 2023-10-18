@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './movie-search-form.css';
-// import debounce from 'lodash';
 
 export default class MovieSearchForm extends React.Component {
   static propTypes = {

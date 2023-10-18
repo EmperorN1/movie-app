@@ -4,7 +4,6 @@
     min-height: 100vh;
     margin: 0 auto;
     margin-top: -16px;
-    /* margin-bottom: -7px; */
     box-sizing: border-box;
     padding: 21px 36px 17px 36px;
 }
@@ -23,7 +22,6 @@
 @media screen and (max-width: 1010px) {
     .container {
         width: 100vw;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding: 21px 16px 17px 16px;
     }
 }

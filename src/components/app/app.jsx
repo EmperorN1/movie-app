@@ -4,12 +4,31 @@ import { Alert, Space, Pagination, Tabs } from 'antd';
 import { Offline, Online } from 'react-detect-offline';
 import { debounce } from 'lodash';
 
-import MovieList from '../movie-list/movie-list';
-import MovieSearchForm from '../movie-search-form/movie-search-form';
-import MovieService from '../../services/movie-service.jsx';
-import { Provider } from '../movie-genre-context/movie-genre-context.jsx';
+import MovieList from '../movie-list';
+import MovieSearchForm from '../movie-search-form';
+import MovieService from '../../services';
+import { Provider } from '../movie-genre-context';
 
-class App extends React.Component {
+const App = () => {
+  return (
+    <React.Fragment>
+      <Online>
+        <AppPage />
+      </Online>
+      <Offline>
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Alert
+            message="It looks like you reached the end of internet"
+            description="It mignt be something good but unfortunately you connot watch content on our site."
+            type="error"
+          />
+        </Space>
+      </Offline>
+    </React.Fragment>
+  );
+};
+
+class AppPage extends React.Component {
   movieService = new MovieService();
   genres;
 
@@ -61,54 +80,43 @@ class App extends React.Component {
     const search = selectedTab == '1' ? <MovieSearchForm getQuery={this.getQuery} query={query} /> : null;
     return (
       <div className="container">
-        <Online>
-          <Provider value={this.genres}>
-            <React.Fragment>
-              <div className="tab-wrapper">
-                <Tabs
-                  centered
-                  defaultActiveKey={selectedTab}
-                  items={[
-                    {
-                      key: '1',
-                      label: 'Search',
-                    },
-                    {
-                      key: '2',
-                      label: 'Rated',
-                    },
-                  ]}
-                  onChange={this.onChangeTab}
-                />
-              </div>
-              {search}
-              <MovieList
-                query={query}
-                page={page}
-                guestID={guestID}
-                selectedTab={selectedTab}
-                onSetResults={this.onSetResults}
+        <Provider value={this.genres}>
+          <React.Fragment>
+            <div className="tab-wrapper">
+              <Tabs
+                centered
+                defaultActiveKey={selectedTab}
+                items={[
+                  {
+                    key: '1',
+                    label: 'Search',
+                  },
+                  {
+                    key: '2',
+                    label: 'Rated',
+                  },
+                ]}
+                onChange={this.onChangeTab}
               />
-              <Pagination
-                onChange={(page) => this.onChangePage(page)}
-                defaultCurrent={1}
-                total={results}
-                showSizeChanger={false}
-                pageSize={20}
-                className="paginator"
-              />
-            </React.Fragment>
-          </Provider>
-        </Online>
-        <Offline>
-          <Space direction="vertical" style={{ width: '100%' }}>
-            <Alert
-              message="It looks like you reached the end of internet"
-              description="It mignt be something good but unfortunately you connot watch content on our site."
-              type="error"
+            </div>
+            {search}
+            <MovieList
+              query={query}
+              page={page}
+              guestID={guestID}
+              selectedTab={selectedTab}
+              onSetResults={this.onSetResults}
             />
-          </Space>
-        </Offline>
+            <Pagination
+              onChange={(page) => this.onChangePage(page)}
+              defaultCurrent={1}
+              total={results}
+              showSizeChanger={false}
+              pageSize={20}
+              className="paginator"
+            />
+          </React.Fragment>
+        </Provider>
       </div>
     );
   }
