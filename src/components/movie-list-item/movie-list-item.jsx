@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './movie-list-item.css';
 import format from 'date-fns/format';
 import { Rate } from 'antd';
 
-import './movie-list-item.css';
 import MovieService from '../../services/movie-service';
 import { Consumer } from '../movie-genre-context/movie-genre-context';
 
 export default class MovieListItem extends Component {
+  static propTypes = {
+    guestID: PropTypes.string.isRequired,
+    genreIds: PropTypes.array.isRequired,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string,
+    posterPath: PropTypes.string,
+    release_date: PropTypes.string,
+    rating: PropTypes.number,
+    voteAverage: PropTypes.string.isRequired,
+  };
   movieService = new MovieService();
 
   rateMovie = (value) => {

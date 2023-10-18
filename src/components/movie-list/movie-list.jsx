@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './movie-list.css';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin, Alert, Space } from 'antd';
@@ -7,6 +8,19 @@ import MovieService from '../../services/movie-service.jsx';
 import MovieListItem from '../movie-list-item/movie-list-item';
 
 export default class MovieList extends React.Component {
+  static propTypes = {
+    query: PropTypes.string,
+    page: PropTypes.number.isRequired,
+    guestID: PropTypes.string.isRequired,
+    selectedTab: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    onSetResults: () => {
+      throw new Error('There is an Error in getting movie list');
+    },
+  };
+
   movieService = new MovieService();
 
   state = {

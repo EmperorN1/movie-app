@@ -1,8 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './movie-search-form.css';
 // import debounce from 'lodash';
 
 export default class MovieSearchForm extends React.Component {
+  static propTypes = {
+    query: PropTypes.string,
+  };
+
+  static defaultProps = {
+    getQuery: () => {
+      throw new Error('There is an Error in searching movie');
+    },
+  };
+
   state = {
     search: this.props.query,
   };
