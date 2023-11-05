@@ -1,0 +1,27 @@
+.container {
+    background-color: #fff;
+    width: 1010px;
+    min-height: 100vh;
+    margin: 0 auto;
+    margin-top: -16px;
+    box-sizing: border-box;
+    padding: 21px 36px 17px 36px;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    margin-top: 37px;
+}
+
+.tab-wrapper {
+    width: 146px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1010px) {
+    .container {
+        width: 100vw;
+        padding: 21px 16px 17px 16px;
+    }
+}

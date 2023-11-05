@@ -26,12 +26,25 @@ export default class MovieList extends React.Component {
   state = {
     lists: [],
     loading: true,
-    error: true,
+    error: false,
     // totalResults: 40,
   };
 
   constructor() {
     super();
+  }
+
+  _transformMovie(obj) {
+    return {
+      genreIds: obj.genre_ids,
+      id: obj.id,
+      title: obj.title,
+      overview: obj.overview,
+      posterPath: obj.poster_path,
+      releaseDate: obj.release_date,
+      rating: obj.rating,
+      voteAverage: obj.vote_average.toFixed(1),
+    };
   }
 
   componentDidMount() {
@@ -65,7 +78,9 @@ export default class MovieList extends React.Component {
 
   onListLoaded = (arr) => {
     this.setState({
-      lists: arr.results,
+      lists: arr.results.map((item) => {
+        return this._transformMovie(item);
+      }),
       totalResults: arr.totalResults,
       loading: false,
     });
